@@ -5,7 +5,9 @@ for (let i = 0; i < 5; i++) {
   orders.push({
     code: `100.${i}`,
     date: new Date(),
-    customer_id: Math.trunc((Math.random() * 4)+1),
+    customer_id:
+     Math.trunc((Math.random() * 4)+1)
+    ,
     paid: i % 2 == 0 ? true : false,
     created_at: new Date(),
     updated_at: new Date(),
