@@ -1,4 +1,6 @@
 'use strict';
+const bcrypt = require('bcrypt')
+
 const {
   Model
 } = require('sequelize');
@@ -10,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      Customer.hasMany(models.Order, {foreignKey: 'customer_id'});
     }
   }
   Customer.init(
@@ -23,6 +25,12 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,
+      },
+      passwordHash: {
+        type: DataTypes.STRING,
+        set(value) {
+          this.setDataValue('passwordHash', bcrypt.hashSync(value, 7))
+        },
       },
     },
     {

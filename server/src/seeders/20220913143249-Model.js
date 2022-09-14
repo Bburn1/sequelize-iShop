@@ -4,7 +4,7 @@ const models = []
 for (let i = 0; i < 10; i++) {
   models.push({
     title: `Model #${i}`,
-    brand_id: Math.trunc(Math.random() * 10),
+    brand_id: Math.trunc((Math.random() * 9)+1),
     created_at: new Date(),
     updated_at: new Date(),
   })

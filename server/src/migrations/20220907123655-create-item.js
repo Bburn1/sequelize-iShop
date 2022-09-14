@@ -11,21 +11,45 @@ module.exports = {
       category_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        references: {
+          model: 'Categories',
+          key: 'id',
+        },
       },
       type_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        references: {
+          model: 'Types',
+          key: 'id',
+        },
       },
       brand_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        references: {
+          model: 'Brands',
+          key: 'id',
+        },
       },
       model_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        references: {
+          model: 'Models',
+          key: 'id',
+        },
+      },
+      store_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'Stores',
+          key: 'id',
+        },
       },
       price: {
-        type: Sequelize.DECIMAL(10,2),
+        type: Sequelize.DECIMAL(10, 2),
         allowNull: false,
       },
       created_at: {

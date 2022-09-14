@@ -1,1 +1,11 @@
-[]
+[
+  "20220907122724-create-customer.js",
+  "20220907122812-create-store.js",
+  "20220907122915-create-category.js",
+  "20220907122936-create-type.js",
+  "20220907123012-create-brand.js",
+  "20220907123057-create-imodel.js",
+  "20220907123419-create-order.js",
+  "20220907123655-create-item.js",
+  "20220914145027-create-items-orders.js"
+]

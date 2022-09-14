@@ -1,13 +1,14 @@
 'use strict'
 
 const items = []
-for (let i = 0; i < 20; i++) {
+for (let i = 0; i <30; i++) {
   items.push({
-    category_id: Math.trunc(Math.random() * 5),
-    type_id: Math.trunc(Math.random() * 5),
-    brand_id: Math.trunc(Math.random() * 10),
-    model_id: Math.trunc(Math.random() * 10),
-    price: (Math.random() * 5000),
+    category_id: Math.trunc((Math.random() * 4)+1),
+    type_id: Math.trunc((Math.random() * 4)+1),
+    brand_id: Math.trunc((Math.random() * 9)+1),
+    model_id: Math.trunc((Math.random() * 9)+1),
+    store_id: Math.trunc((Math.random() * 4)+1),
+    price: Math.random() * 5000,
     created_at: new Date(),
     updated_at: new Date(),
   })

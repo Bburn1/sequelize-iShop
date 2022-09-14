@@ -10,7 +10,10 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+          IModel.belongsTo(models.Brand, { foreignKey: 'brand_id' })
+          IModel.hasMany(models.Item, { foreignKey: 'model_id' })
+
+
     }
   }
   IModel.init(
@@ -19,10 +22,10 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      brand_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
+      // brand_id: {
+      //   type: DataTypes.INTEGER,
+      //   allowNull: false,
+      // },
       description: DataTypes.TEXT,
     },
     {
