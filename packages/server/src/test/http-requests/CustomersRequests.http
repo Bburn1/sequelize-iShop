@@ -1,0 +1,44 @@
+GET http://localhost:5000/api/customers HTTP/1.1
+content-type: application/json
+
+###
+
+GET http://localhost:5000/api/customers/3 HTTP/1.1
+content-type: application/json
+
+###
+
+POST http://localhost:5000/api/customers HTTP/1.1
+content-type: application/json
+
+{
+  "name": "Adsd Albertovich",
+  "email":"AAddd@gmail.com",
+  "password":"nicepassword"
+}
+
+###
+
+PUT http://localhost:5000/api/customers HTTP/1.1
+content-type: application/json
+
+{
+  "id":8,
+  "name": "Vasiliy Padch",
+  "email":"VPddsS@gmail.com",
+  "password":"nicepassword"
+}
+###
+
+PATCH http://localhost:5000/api/customers/8 HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Vasiliy PpDP"
+
+}
+
+###
+
+DELETE http://localhost:5000/api/customers/3 HTTP/1.1
+content-type: application/json

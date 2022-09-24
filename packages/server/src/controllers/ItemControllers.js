@@ -1,9 +1,10 @@
 import createError from 'http-errors';
 
-import {Item, Type, Category, IModel, Brand, Store , sequelize } from  '../db/models';
+import {Item, Type, Category, IModel, Brand, Store, Order,  sequelize } from  '../db/models';
 
 
 class ItemController {
+
   async getItems(req, res, next) {
     try {
       const allItems = await Item.findAll({
@@ -34,16 +35,14 @@ class ItemController {
             required: true,
           },
         ],
-        attributes : ['id', 'price'],
+        attributes: ['id', 'price'],
       })
 
       if (allItems) {
         console.log('Result found' + JSON.stringify(allItems, null, 2))
-        res.status(200).send(allItems)
+        res.status(200).json(allItems)
       } else {
-        // res.status(404).send(`items not found`)
         next(createError(404, 'Item not found'))
-
       }
     } catch (error) {
       next(error)
@@ -52,44 +51,43 @@ class ItemController {
   }
 
   async getOneItem(req, res, next) {
-    const id = req.params.id
-    const itemByPk = await Item.findByPk(id, {
-      include: [
-        {
-          model: Category,
-          attributes: ['id', 'title'],
-          required: true,
-        },
-        {
-          model: Type,
-          attributes: ['id', 'title'],
-          required: true,
-        },
-        {
-          model: IModel,
-          required: true,
-          attributes: ['id', 'title'],
-        },
-        {
-          model: Brand,
-          attributes: ['id', 'title'],
-          required: true,
-        },
-        {
-          model: Store,
-          attributes: ['id', 'title'],
-          required: true,
-        },
-      ],
-      attributes: ['id', 'price'],
-    })
     try {
+      const id = req.params.id
+      const itemByPk = await Item.findByPk(id, {
+        include: [
+          {
+            model: Category,
+            attributes: ['id', 'title'],
+            required: true,
+          },
+          {
+            model: Type,
+            attributes: ['id', 'title'],
+            required: true,
+          },
+          {
+            model: IModel,
+            required: true,
+            attributes: ['id', 'title'],
+          },
+          {
+            model: Brand,
+            attributes: ['id', 'title'],
+            required: true,
+          },
+          {
+            model: Store,
+            attributes: ['id', 'title'],
+            required: true,
+          },
+        ],
+        attributes: ['id', 'price'],
+      })
       if (itemByPk) {
-          console.log('Result found' + JSON.stringify(itemByPk, null, 2))
-          res.status(200).send(itemByPk)
+        console.log('Result found' + JSON.stringify(itemByPk, null, 2))
+        res.status(200).json(itemByPk)
       } else {
-        // res.status(404).send(`item not found`)
-        next(createError(404, 'Item not found'));
+        next(createError(404, 'Item not found'))
       }
     } catch (error) {
       next(error)
@@ -103,19 +101,17 @@ class ItemController {
 
     try {
       const body = req.body
-      const createdItem = await Item.create(body,{transaction:t})
+      const createdItem = await Item.create(body, { transaction: t })
 
       if (createdItem) {
-        console.log(JSON.stringify(createdItem,null,2));
-        res.status(200).send(createdItem);
+        console.log(JSON.stringify(createdItem, null, 2))
+        res.status(200).json(createdItem)
       } else {
-        // res.status(404).send(`item not found`)
         next(createError(404, 'Item not found'))
-
       }
-      t.commit();
+      t.commit()
     } catch (error) {
-      t.rollback();
+      t.rollback()
       next(error)
 
       console.log(error.massage)
@@ -125,28 +121,23 @@ class ItemController {
   async updateItem(req, res, next) {
     const t = await sequelize.transaction()
 
-
     try {
       const body = req.body
       const updatedItem = await Item.update(body, {
-        transaction:t,
-        where:{
-          id:body.id
+        transaction: t,
+        where: {
+          id: body.id,
         },
-        returning:true,
-        raw:true
-
+        returning: true,
+        raw: true,
       })
       if (updatedItem) {
         console.log(JSON.stringify(updatedItem, null, 2))
-        res.status(200).send(updatedItem)
-
+        res.status(200).json(updatedItem)
       } else {
-        // res.status(404).send(`item not found`)
         next(createError(404, 'Item not found'))
       }
       t.commit()
-
     } catch (error) {
       t.rollback()
 
@@ -159,30 +150,25 @@ class ItemController {
   async changeItem(req, res, next) {
     const t = await sequelize.transaction()
 
-
     try {
       const {
-        params:{id},
-        body
+        params: { id },
+        body,
       } = req
-       const [rowsCount, [updatedItem]] = await Item.update(body, {
-         raw: true,
-         transaction: t,
-         returning: true,
-         where: { id },
-       })
+      const [rowsCount, [updatedItem]] = await Item.update(body, {
+        raw: true,
+        transaction: t,
+        returning: true,
+        where: { id },
+      })
 
-
-      if (rowsCount >0 ) {
+      if (rowsCount > 0) {
         console.log(updatedItem)
         res.status(200).json(updatedItem)
       } else {
-        // res.status(404).send(`item not found`)
         next(createError(404, 'Item not found'))
-
       }
       t.commit()
-
     } catch (error) {
       t.rollback()
 
@@ -193,23 +179,19 @@ class ItemController {
   }
 
   async deleteItem(req, res, next) {
-
     const t = await sequelize.transaction()
-
 
     try {
       const id = req.params.id
 
-      const deleteItem = await Item.destroy({where: {id}})
+      const deleteItem = await Item.destroy({ where: { id } })
 
       if (deleteItem) {
-        res.send(res.statusCode)
+        res.status(200).json(deleteItem)
       } else {
-        // res.status(404).send(`item not found`)
         next(createError(404, 'Item not found'))
       }
       t.commit()
-
     } catch (error) {
       t.rollback()
 

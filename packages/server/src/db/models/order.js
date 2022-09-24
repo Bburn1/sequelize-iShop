@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       customer_id: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        // allowNull: false,
       },
       paid: {
         type: DataTypes.BOOLEAN,

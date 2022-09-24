@@ -1,0 +1,42 @@
+GET http://localhost:5000/api/stores HTTP/1.1
+content-type: application/json
+
+###
+
+GET http://localhost:5000/api/stores/3 HTTP/1.1
+content-type: application/json
+
+###
+
+POST http://localhost:5000/api/stores HTTP/1.1
+content-type: application/json
+
+{
+  "title": "Nice store"
+  
+}
+
+###
+
+PUT http://localhost:5000/api/stores HTTP/1.1
+content-type: application/json
+
+{
+  "id":6,
+    "title": "Nice store",
+    "description": "Nice store"
+}
+###
+
+PATCH http://localhost:5000/api/stores/6 HTTP/1.1
+content-type: application/json
+
+{
+    "title": "NotNffice store"
+
+}
+
+###
+
+DELETE http://localhost:5000/api/stores/6 HTTP/1.1
+content-type: application/json

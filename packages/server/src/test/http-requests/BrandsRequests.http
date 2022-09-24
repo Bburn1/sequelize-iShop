@@ -1,0 +1,42 @@
+GET http://localhost:5000/api/brands HTTP/1.1
+content-type: application/json
+
+###
+
+GET http://localhost:5000/api/brands/3 HTTP/1.1
+content-type: application/json
+
+###
+
+POST http://localhost:5000/api/brands HTTP/1.1
+content-type: application/json
+
+{
+  "title": "Nice brand"
+  
+}
+
+###
+
+PUT http://localhost:5000/api/brands HTTP/1.1
+content-type: application/json
+
+{
+  "id":11,
+    "title": "Nice brand",
+    "description": "Nice brand"
+}
+###
+
+PATCH http://localhost:5000/api/brands/11 HTTP/1.1
+content-type: application/json
+
+{
+    "title": "NotNffice brand"
+
+}
+
+###
+
+DELETE http://localhost:5000/api/brands/1 HTTP/1.1
+content-type: application/json

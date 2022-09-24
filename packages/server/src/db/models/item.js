@@ -26,23 +26,23 @@ module.exports = (sequelize, DataTypes) => {
     {
       category_id: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        // allowNull: false,
       },
       type_id: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        // allowNull: false,
       },
       brand_id: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        // allowNull: false,
       },
       model_id: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        // allowNull: false,
       },
       store_id: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        // allowNull: false,
       },
       price: {
         type: DataTypes.DECIMAL(10, 2),

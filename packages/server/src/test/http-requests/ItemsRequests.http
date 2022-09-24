@@ -1,6 +1,7 @@
 GET http://localhost:5000/api/items HTTP/1.1
 content-type: application/json
 
+
 ###
 
 GET http://localhost:5000/api/items/3 HTTP/1.1
@@ -40,10 +41,10 @@ PATCH http://localhost:5000/api/items/35 HTTP/1.1
 content-type: application/json
 
 {
-  "price": 3444
+  "price": 344456
 }
 
 ###
 
-DELETE http://localhost:5000/api/items/35 HTTP/1.1
+DELETE http://localhost:5000/api/items/45 HTTP/1.1
 content-type: application/json

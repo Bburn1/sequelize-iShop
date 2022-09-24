@@ -14,11 +14,13 @@ module.exports = {
       },
       brand_id: {
         type: Sequelize.INTEGER,
-        allowNull: false,
+        // allowNull: false,
         references: {
           model: 'Brands',
           key: 'id',
         },
+        onDelete: 'SET NULL',
+        onUpdate: 'CASCADE',
       },
       description: {
         type: Sequelize.TEXT,

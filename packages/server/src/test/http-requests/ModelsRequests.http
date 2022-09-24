@@ -1,0 +1,46 @@
+GET http://localhost:5000/api/models HTTP/1.1
+content-type: application/json
+
+###
+
+GET http://localhost:5000/api/models/3 HTTP/1.1
+content-type: application/json
+
+###
+
+POST http://localhost:5000/api/models HTTP/1.1
+content-type: application/json
+
+{
+  "title": "Xiaomddi",
+  
+  "brand_id":1
+  
+
+}
+
+###
+
+PUT http://localhost:5000/api/models HTTP/1.1
+content-type: application/json
+
+{
+  "id":6,
+  "title": "Xiaomi",
+  "description": "Nice Model",
+  "brand_id":1
+  
+}
+###
+
+PATCH http://localhost:5000/api/models/6 HTTP/1.1
+content-type: application/json
+
+{
+      "title": "Apple"
+}
+
+###
+
+DELETE http://localhost:5000/api/models/1 HTTP/1.1
+content-type: application/json
