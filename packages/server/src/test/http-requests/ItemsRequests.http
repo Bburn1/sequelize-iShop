@@ -4,6 +4,12 @@ content-type: application/json
 
 ###
 
+GET http://localhost:5000/api/items?page=2&result=12 HTTP/1.1
+content-type: application/json
+
+
+###
+
 GET http://localhost:5000/api/items/3 HTTP/1.1
 content-type: application/json
 
@@ -13,8 +19,8 @@ POST http://localhost:5000/api/items HTTP/1.1
 content-type: application/json
 
 {
-  "price": 6653,
-  "category_id":2,
+  "price":"j3d" ,
+  "category_id":3,
   "type_id":1,
   "brand_id":2,
   "model_id":3,
@@ -37,11 +43,11 @@ content-type: application/json
 }
 ###
 
-PATCH http://localhost:5000/api/items/35 HTTP/1.1
+PATCH http://localhost:5000/api/items/31 HTTP/1.1
 content-type: application/json
 
 {
-  "price": 344456
+  "price":
 }
 
 ###

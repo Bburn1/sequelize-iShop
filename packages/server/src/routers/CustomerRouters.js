@@ -4,6 +4,9 @@ import customerControllers from '../controllers/CustomerControllers'
 
 const customerRouter = new Router()
 
+import{upload} from '../middleware';
+
+
 
 customerRouter.route('/')
 .get(customerControllers.getCustomers)
@@ -15,5 +18,7 @@ customerRouter.route('/:id')
   .patch(customerControllers.changeCustomer)
   .delete(customerControllers.deleteCustomer)
 
+customerRouter.route('/:id/images')
+  .patch(upload.uploadCustomerImage.single('customerImage'), customerControllers.addImage)
 
 export default customerRouter

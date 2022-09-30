@@ -155,6 +155,39 @@ class CustomerController {
   }
 
 
+
+  async addImage(req,res,next) {
+    const t = await sequelize.transaction()
+
+    try {
+      const {
+        file:{filename},
+        params:{id}
+      } = req 
+
+      const [rowsCount,[updatedCustomer]] = await Customer.update({image:filename},{
+        where: {id},
+        transaction: t,
+        raw: true,
+        returning: true,
+      })
+
+      if(rowsCount >0 ){
+        console.log(updatedCustomer);
+        res.status(200).json(updatedCustomer)
+      }else{
+        next(createError(404, 'Customer not found'))
+      }
+
+      t.commit()
+    } catch (error) {
+      console.log(error.massage);
+      t.rollback()
+      next(error)
+    }
+
+
+  }
 }
 
 export default new CustomerController

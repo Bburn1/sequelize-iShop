@@ -3,6 +3,7 @@ content-type: application/json
 
 ###
 
+
 GET http://localhost:5000/api/customers/3 HTTP/1.1
 content-type: application/json
 
@@ -12,8 +13,8 @@ POST http://localhost:5000/api/customers HTTP/1.1
 content-type: application/json
 
 {
-  "name": "Adsd Albertovich",
-  "email":"AAddd@gmail.com",
+  "name": "Denis Albertovich",
+  "email":"Denis@gmail.com",
   "password":"nicepassword"
 }
 

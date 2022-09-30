@@ -7,6 +7,7 @@ class ItemController {
 
   async getItems(req, res, next) {
     try {
+      const {limit, offset} = req.pagination;
       const allItems = await Item.findAll({
         include: [
           {
@@ -36,6 +37,8 @@ class ItemController {
           },
         ],
         attributes: ['id', 'price'],
+        limit,
+        offset,
       })
 
       if (allItems) {

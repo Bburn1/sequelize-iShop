@@ -7,5 +7,6 @@
   "20220907123057-create-imodel.js",
   "20220907123419-create-order.js",
   "20220907123655-create-item.js",
-  "20220914145027-create-items-orders.js"
+  "20220914145027-create-items-orders.js",
+  "20220930164637-add-image-customer.js"
 ]
